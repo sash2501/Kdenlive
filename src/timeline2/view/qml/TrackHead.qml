@@ -37,7 +37,7 @@ Rectangle {
     property bool current: false
     property int myTrackHeight
     property int trackId : -42
-    property int iconSize: root.baseUnit * 2
+    property int iconSize: root.baseUnit * 1.5
     property string trackTag
     property int thumbsFormat: 0
     property int collapsedHeight: expandButton.height
