@@ -650,11 +650,36 @@ Rectangle {
                     // effect names background
                     id: effectsRect
                     color: '#555555'
-                    width: effectLabel.width + 2
+                    width: effectLabel.width + effectsToggle.width + 2
                     height: effectLabel.height
                     x: labelRect.x
                     anchors.top: labelRect.bottom
+                    anchors.left: labelRect.left
                     visible: labelRect.visible && clipRoot.effectNames != '' && container.showDetails
+                    Rectangle {
+                        // effects toggle button background
+                        id: effectsToggle
+                        color: '#fdbc4b'
+                        width: effectButton.width
+                        height: effectButton.height
+                        ToolButton {
+                            id: effectButton
+                            height: effectLabel.height
+                            width: effectLabel.height
+                            visible: effectsRect.visible
+                            icon {
+                                name: 'tools-wizard'
+                                color: 'black'
+                                height: effectLabel.height
+                                width: effectLabel.height
+                            }
+                            anchors {
+                                top: effectsRect.top
+                                left: effectsRect.left
+                                leftMargin: 1
+                            }
+                        }
+                    }
                     Text {
                         // Effect names text
                         id: effectLabel
@@ -662,8 +687,8 @@ Rectangle {
                         font: miniFont
                         visible: effectsRect.visible
                         anchors {
-                            top: effectsRect.top
-                            left: effectsRect.left
+                            top: effectsToggle.top
+                            left: effectsToggle.right
                             leftMargin: 1
                             // + ((isAudio || !settings.timelineShowThumbnails) ? 0 : inThumbnail.width) + 1
                         }
@@ -672,7 +697,7 @@ Rectangle {
                         styleColor: 'black'
                     }
                }
-               Rectangle{
+               Rectangle {
                     //proxy 
                     id:proxyRect
                     color: '#fdbc4b'
