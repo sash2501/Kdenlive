@@ -44,6 +44,7 @@ class ProjectClip;
 class MarkerListModel;
 class Render;
 class ProfileParam;
+class SubtitleModel;
 
 class QUndoGroup;
 class QUndoCommand;
@@ -160,6 +161,9 @@ public:
     /** @brief Returns the number of audio channels for this project */
     int audioChannels() const;
 
+    /** @brief Returns a pointer to the subtitle model */
+    std::shared_ptr<SubtitleModel> getSubtitleModel() const;
+
 private:
     QUrl m_url;
     QDomDocument m_document;
@@ -189,6 +193,7 @@ private:
     QMap<QString, QString> m_documentProperties;
     QMap<QString, QString> m_documentMetadata;
     std::shared_ptr<MarkerListModel> m_guideModel;
+    std::shared_ptr<SubtitleModel> m_subtitleModel;
 
     QString searchFileRecursively(const QDir &dir, const QString &matchSize, const QString &matchHash) const;
 
