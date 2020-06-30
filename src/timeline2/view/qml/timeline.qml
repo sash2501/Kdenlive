@@ -1450,21 +1450,10 @@ Rectangle {
         }
 
 
-    Connections {
-        target: timeline
-        onFrameFormatChanged: ruler.adjustFormat()
-        onSelectionChanged: {
-            if (dragProxy.draggedItem > -1 && !timeline.exists(dragProxy.draggedItem)) {
-                endDrag()
-            }
-        }
-    }
-
-
     DelegateModel {
         id: subtitleDelegateModel
         model: subtitleModel
-        Item{
+        Item {
             id: subtitleRoot
             visible : true
             Rectangle {
@@ -1476,6 +1465,17 @@ Rectangle {
             }
         }
     }
+
+    Connections {
+        target: timeline
+        onFrameFormatChanged: ruler.adjustFormat()
+        onSelectionChanged: {
+            if (dragProxy.draggedItem > -1 && !timeline.exists(dragProxy.draggedItem)) {
+                endDrag()
+            }
+        }
+    }
+
 
     // This provides continuous scrolling at the left/right edges.
     Timer {
